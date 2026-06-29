@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Banner from "./components/Banner";
 import StatsSection from "./components/StatsSection";
+import FeaturedRecipes from "./components/FeaturedRecipes";
+import PopularRecipes from "./components/PopularRecipes";
 
 export default function Home() {
   return (
@@ -8,6 +10,8 @@ export default function Home() {
       
         <Banner />
    <StatsSection />
+   <FeaturedRecipes />
+   <PopularRecipes />
     </div>
   );
 }

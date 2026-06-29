@@ -240,7 +240,7 @@ export default function AddRecipePage() {
 
     try {
    
-      const res = await fetch("https://recipehub-sigma-three.vercel.app/api/recipes/add", {
+      const res = await fetch("https://recipehub-server-red.vercel.app/api/recipes/add", {
         method: "POST",
         headers: { 
           "Content-Type": "application/json" 

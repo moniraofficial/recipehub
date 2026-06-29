@@ -15,8 +15,8 @@
 //       setLoading(true);
 //       try {
 //         const url = selectedCategory === "All" 
-//           ? "https://recipehub-sigma-three.vercel.app/api/recipes/all" 
-//           : `https://recipehub-sigma-three.vercel.app/api/recipes/all?category=${selectedCategory}`;
+//           ? "https://recipehub-server-red.vercel.app/api/recipes/all" 
+//           : `https://recipehub-server-red.vercel.app/api/recipes/all?category=${selectedCategory}`;
 
 //         const res = await fetch(url);
 //         if (res.ok) {

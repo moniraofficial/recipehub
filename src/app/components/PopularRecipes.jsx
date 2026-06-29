@@ -8,7 +8,7 @@ export default function PopularRecipes() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://recipehub-sigma-three.vercel.app/api/recipes/popular")
+    fetch("https://recipehub-server-red.vercel.app/api/recipes/popular")
       .then(res => res.json())
       .then(data => {
         setRecipes(data);

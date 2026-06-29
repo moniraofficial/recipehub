@@ -26,7 +26,7 @@ export default function RecipeDetailsPage({ params: paramsPromise }) {
 
     const fetchRecipeDetails = async () => {
       try {
-        const res = await fetch(`https://recipehub-sigma-three.vercel.app/api/recipes/${id}`);
+        const res = await fetch(`https://recipehub-server-red.vercel.app/api/recipes/${id}`);
         if (res.ok) {
           const data = await res.json();
           setRecipe(data);

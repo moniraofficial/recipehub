@@ -21,7 +21,7 @@ export default function BrowseRecipesList() {
         const res = await fetch(url);
         if (res.ok) {
           const data = await res.json();
-          console.log("Fetched browse recipes data:", data); // আপনার ব্রাউজার কনসোলে ডাটা চেক করার জন্য
+          console.log("Fetched browse recipes data:", data); 
           setRecipes(data);
         }
       } catch (error) {

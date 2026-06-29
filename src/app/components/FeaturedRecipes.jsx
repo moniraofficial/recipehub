@@ -39,7 +39,7 @@ export default function FeaturedRecipes() {
   );
 }
 
-// 🎴 Reusable New Figma Card
+
 function RecipeCard({ recipe }) {
   return (
     <div className="bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all p-3 flex flex-col justify-between">

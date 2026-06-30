@@ -20,7 +20,7 @@ export default function Banner() {
           
           <div className="flex items-center gap-3 pt-1">
             <Link
-              href="/recipes"
+              href="/browse"
               className="px-6 py-3 text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg shadow-sm transition-all text-center min-w-[140px]"
             >
               Explore Recipes

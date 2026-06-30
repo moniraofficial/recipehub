@@ -336,16 +336,144 @@
 
 // export default LoginPage;
 
+// updating 
+
+
+// "use client";
+// import { useState } from "react";
+// import Link from "next/link";
+// import { useRouter } from "next/navigation"; 
+// import toast from "react-hot-toast";
+// import { authClient } from "../lib/auth-client";
+
+// const LoginPage = () => {
+//   const router = useRouter(); 
+//   const [showPassword, setShowPassword] = useState(false);
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
+//   const [rememberMe, setRememberMe] = useState(false);
+//   const [error, setError] = useState("");
+//   const [loading, setLoading] = useState(false);
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     setError("");
+//     setLoading(true);
+
+//     try {
+    
+//       await authClient.signIn.email({
+//         email,
+//         password,
+//         callbackURL: "/", 
+//       });
+    
+//       console.log("Submitting to Better Auth:", { email, password });
+//       toast.success("Logged in successfully!");
+
+//       setTimeout(() => {
+//         router.push("/");
+//       }, 1000);
+
+//     } catch (err) {
+//       setError(err.message || "Invalid email or password");
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   const handleGoogleLogin = async () => {
+//     try {
+      
+//       await authClient.signIn.social({
+//         provider: "google",
+//         callbackURL: "/",
+//       });
+      
+//       console.log("Initiating Better Auth Google Login");
+//     } catch (err) {
+//       setError("Google login failed. Try again.");
+//     }
+//   };
+
+//   return (
+//     <div className="min-h-screen w-full flex items-center justify-center bg-white dark:bg-slate-900 px-4 transition-colors duration-300">
+//       <div className="w-full max-w-[400px] space-y-7 py-8">
+//         <div className="space-y-2 items-center text-center">
+//           <h1 className="text-[32px] font-bold text-slate-900 dark:text-white tracking-tight">Login</h1>
+//           <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-200">Welcome back!</h2>
+//           <p className="text-sm text-slate-500 dark:text-slate-400">Login to your account</p>
+//         </div>
+
+//         {error && (
+//           <div className="p-3 text-sm text-red-600 bg-red-50 dark:bg-red-950/30 rounded-xl font-medium">
+//             {error}
+//           </div>
+//         )}
+
+//         <form onSubmit={handleSubmit} className="space-y-5">
+//           <div className="space-y-2">
+//             <label className="text-sm font-bold text-slate-800 dark:text-slate-200 block">Email</label>
+//             <div className="relative flex items-center">
+//               <span className="absolute left-4 text-slate-400">📧</span>
+//               <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your email" className="w-full pl-12 pr-4 py-3.5 bg-white dark:bg-slate-800 border border-slate-200 rounded-xl text-sm focus:outline-none text-slate-900 dark:text-white" />
+//             </div>
+//           </div>
+
+//           <div className="space-y-2">
+//             <div className="flex items-center justify-between">
+//               <label className="text-sm font-bold text-slate-800 dark:text-slate-200">Password</label>
+//               <Link href="/forgot-password" className="text-xs text-emerald-600 font-semibold">Forgot password?</Link>
+//             </div>
+//             <div className="relative flex items-center">
+//               <span className="absolute left-4 text-slate-400">🔒</span>
+//               <input type={showPassword ? "text" : "password"} required value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter your password" className="w-full pl-12 pr-12 py-3.5 bg-white dark:bg-slate-800 border border-slate-200 rounded-xl text-sm focus:outline-none text-slate-900 dark:text-white" />
+//               <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 text-slate-400">
+//                 {showPassword ? "👁️" : "🙈"}
+//               </button>
+//             </div>
+//           </div>
+
+//           <div className="flex items-center gap-2.5 pt-1">
+//             <input type="checkbox" id="remember" checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} className="w-4 h-4" />
+//             <label htmlFor="remember" className="text-sm text-slate-500 cursor-pointer">Remember me</label>
+//           </div>
+
+//           <button type="submit" disabled={loading} className="w-full py-3.5 bg-emerald-600 text-white font-bold rounded-xl">
+//             {loading ? "Logging in..." : "Login"}
+//           </button>
+//         </form>
+
+//         <div className="relative flex py-2 items-center">
+//           <div className="flex-grow border-t border-slate-100 dark:border-slate-800"></div>
+//           <span className="mx-4 text-xs font-semibold text-slate-400">or continue with</span>
+//           <div className="flex-grow border-t border-slate-100 dark:border-slate-800"></div>
+//         </div>
+
+//         <button type="button" onClick={handleGoogleLogin} className="w-full py-3.5 bg-white border border-slate-200 dark:bg-slate-800 rounded-xl font-bold text-sm text-slate-800 dark:text-slate-200 flex items-center justify-center gap-2">
+//           Sign in with Google
+//         </button>
+
+//         <p className="text-center text-sm text-slate-500">
+//           Do not have an account? <Link href="/register" className="text-emerald-600 font-bold">Register</Link>
+//         </p>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default LoginPage;
+
+// recheck 
+
 
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation"; 
 import toast from "react-hot-toast";
-import { authClient } from "../lib/auth-client";
+import { authClient } from "../lib/auth-client"; // Verify your path to auth-client
 
 const LoginPage = () => {
-  const router = useRouter(); 
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -359,22 +487,24 @@ const LoginPage = () => {
     setLoading(true);
 
     try {
-    
+      console.log("Submitting to Better Auth:", { email, password });
+      
       await authClient.signIn.email({
         email,
         password,
-        callbackURL: "/", 
+        dontRememberMe: !rememberMe,
       });
     
-      console.log("Submitting to Better Auth:", { email, password });
       toast.success("Logged in successfully!");
 
+      // Force layout recalculation so the Navbar immediately detects the user context
       setTimeout(() => {
-        router.push("/");
-      }, 1000);
+        window.location.href = "/";
+      }, 800);
 
     } catch (err) {
       setError(err.message || "Invalid email or password");
+      toast.error(err.message || "Invalid email or password");
     } finally {
       setLoading(false);
     }
@@ -382,15 +512,14 @@ const LoginPage = () => {
 
   const handleGoogleLogin = async () => {
     try {
-      
+      console.log("Initiating Better Auth Google Login");
       await authClient.signIn.social({
         provider: "google",
         callbackURL: "/",
       });
-      
-      console.log("Initiating Better Auth Google Login");
     } catch (err) {
       setError("Google login failed. Try again.");
+      toast.error("Google login failed.");
     }
   };
 
@@ -414,7 +543,14 @@ const LoginPage = () => {
             <label className="text-sm font-bold text-slate-800 dark:text-slate-200 block">Email</label>
             <div className="relative flex items-center">
               <span className="absolute left-4 text-slate-400">📧</span>
-              <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your email" className="w-full pl-12 pr-4 py-3.5 bg-white dark:bg-slate-800 border border-slate-200 rounded-xl text-sm focus:outline-none text-slate-900 dark:text-white" />
+              <input 
+                type="email" 
+                required 
+                value={email} 
+                onChange={(e) => setEmail(e.target.value)} 
+                placeholder="Enter your email" 
+                className="w-full pl-12 pr-4 py-3.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none text-slate-900 dark:text-white focus:border-emerald-500" 
+              />
             </div>
           </div>
 
@@ -425,35 +561,56 @@ const LoginPage = () => {
             </div>
             <div className="relative flex items-center">
               <span className="absolute left-4 text-slate-400">🔒</span>
-              <input type={showPassword ? "text" : "password"} required value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter your password" className="w-full pl-12 pr-12 py-3.5 bg-white dark:bg-slate-800 border border-slate-200 rounded-xl text-sm focus:outline-none text-slate-900 dark:text-white" />
-              <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 text-slate-400">
+              <input 
+                type={showPassword ? "text" : "password"} 
+                required 
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)} 
+                placeholder="Enter your password" 
+                className="w-full pl-12 pr-12 py-3.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none text-slate-900 dark:text-white focus:border-emerald-500" 
+              />
+              <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 text-slate-400 focus:outline-none">
                 {showPassword ? "👁️" : "🙈"}
               </button>
             </div>
           </div>
 
           <div className="flex items-center gap-2.5 pt-1">
-            <input type="checkbox" id="remember" checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} className="w-4 h-4" />
-            <label htmlFor="remember" className="text-sm text-slate-500 cursor-pointer">Remember me</label>
+            <input 
+              type="checkbox" 
+              id="remember" 
+              checked={rememberMe} 
+              onChange={(e) => setRememberMe(e.target.checked)} 
+              className="w-4 h-4 accent-emerald-600 rounded" 
+            />
+            <label htmlFor="remember" className="text-sm text-slate-500 dark:text-slate-400 cursor-pointer select-none">Remember me</label>
           </div>
 
-          <button type="submit" disabled={loading} className="w-full py-3.5 bg-emerald-600 text-white font-bold rounded-xl">
+          <button 
+            type="submit" 
+            disabled={loading} 
+            className="w-full py-3.5 bg-emerald-600 text-white font-bold rounded-xl hover:bg-emerald-700 transition-colors shadow-sm disabled:bg-emerald-600/50"
+          >
             {loading ? "Logging in..." : "Login"}
           </button>
         </form>
 
         <div className="relative flex py-2 items-center">
           <div className="flex-grow border-t border-slate-100 dark:border-slate-800"></div>
-          <span className="mx-4 text-xs font-semibold text-slate-400">or continue with</span>
+          <span className="mx-4 text-xs font-semibold text-slate-400 whitespace-nowrap">or continue with</span>
           <div className="flex-grow border-t border-slate-100 dark:border-slate-800"></div>
         </div>
 
-        <button type="button" onClick={handleGoogleLogin} className="w-full py-3.5 bg-white border border-slate-200 dark:bg-slate-800 rounded-xl font-bold text-sm text-slate-800 dark:text-slate-200 flex items-center justify-center gap-2">
+        <button 
+          type="button" 
+          onClick={handleGoogleLogin} 
+          className="w-full py-3.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-bold text-sm text-slate-800 dark:text-slate-200 flex items-center justify-center gap-2 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
+        >
           Sign in with Google
         </button>
 
-        <p className="text-center text-sm text-slate-500">
-          Do not have an account? <Link href="/register" className="text-emerald-600 font-bold">Register</Link>
+        <p className="text-center text-sm text-slate-500 dark:text-slate-400">
+          Do not have an account? <Link href="/register" className="text-emerald-600 font-bold hover:underline">Register</Link>
         </p>
       </div>
     </div>
@@ -461,4 +618,3 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-

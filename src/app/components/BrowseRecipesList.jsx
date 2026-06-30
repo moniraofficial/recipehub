@@ -15,8 +15,8 @@ export default function BrowseRecipesList() {
       setLoading(true);
       try {
         const url = selectedCategory === "All" 
-          ? "https://recipehub-server-red.vercel.app/api/recipes/all" 
-          : `https://recipehub-server-red.vercel.app/api/recipes/all?category=${selectedCategory}`;
+          ? "http://localhost:5000/api/recipes/all" 
+          : `http://localhost:5000/api/recipes/all?category=${selectedCategory}`;
 
         const res = await fetch(url);
         if (res.ok) {
@@ -132,3 +132,4 @@ export default function BrowseRecipesList() {
     </div>
   );
 }
+

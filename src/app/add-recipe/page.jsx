@@ -185,238 +185,241 @@
 
 // export default AddRecipePage;
 
-'use client';
 
-import React, { useState } from 'react';
-import toast from 'react-hot-toast';
 
-export default function AddRecipePage() {
+// /////////////////////////////////
+// 'use client';
 
-  const [formData, setFormData] = useState({
-    recipeName: '',
-    category: '', 
-    cuisineType: '',
-    difficulty: '',
-    prepTime: '',
-    imageURL: '',
-    ingredients: '',
-    instructions: '',
-  });
+// import React, { useState } from 'react';
+// import toast from 'react-hot-toast';
 
-  const [loading, setLoading] = useState(false);
+// export default function AddRecipePage() {
+
+//   const [formData, setFormData] = useState({
+//     recipeName: '',
+//     category: '', 
+//     cuisineType: '',
+//     difficulty: '',
+//     prepTime: '',
+//     imageURL: '',
+//     ingredients: '',
+//     instructions: '',
+//   });
+
+//   const [loading, setLoading] = useState(false);
 
  
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+//   const handleChange = (e) => {
+//     const { name, value } = e.target;
+//     setFormData({ ...formData, [name]: value });
+//   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     setLoading(true);
 
-    alert("Form Button Clicked!");
-    console.log("Hello from the first line!");
+//     alert("Form Button Clicked!");
+//     console.log("Hello from the first line!");
     
-    setLoading(true);
+//     setLoading(true);
 
-    const formattedData = {
-      recipeName: formData.recipeName,
-      category: formData.category,
-      cuisineType: formData.cuisineType,
-      difficulty: formData.difficulty || 'Easy',
-      prepTime: parseInt(formData.prepTime) || 30, 
-      imageURL: formData.imageURL,
-      ingredients: formData.ingredients,
-      instructions: formData.instructions,
-    };
+//     const formattedData = {
+//       recipeName: formData.recipeName,
+//       category: formData.category,
+//       cuisineType: formData.cuisineType,
+//       difficulty: formData.difficulty || 'Easy',
+//       prepTime: parseInt(formData.prepTime) || 30, 
+//       imageURL: formData.imageURL,
+//       ingredients: formData.ingredients,
+//       instructions: formData.instructions,
+//     };
 
    
-    console.log("==========================================");
-    console.log("Submitting Recipe Data to Backend:", formattedData);
-    console.log("==========================================");
+//     console.log("==========================================");
+//     console.log("Submitting Recipe Data to Backend:", formattedData);
+//     console.log("==========================================");
 
-    const toastId = toast.loading("Publishing your recipe...");
+//     const toastId = toast.loading("Publishing your recipe...");
 
-    try {
+//     try {
    
-      const res = await fetch("https://recipehub-server-red.vercel.app/api/recipes/add", {
-        method: "POST",
-        headers: { 
-          "Content-Type": "application/json" 
-        },
-        body: JSON.stringify(formattedData),
-      });
+//       const res = await fetch("http://localhost:5000/api/recipes/add", {
+//         method: "POST",
+//         headers: { 
+//           "Content-Type": "application/json" 
+//         },
+//         body: JSON.stringify(formattedData),
+//       });
 
-      const data = await res.json();
+//       const data = await res.json();
       
     
-      console.log("Backend Response Data:", data);
+//       console.log("Backend Response Data:", data);
 
-      if (res.ok) {
-        toast.success("Recipe listed successfully in MongoDB! 🍳🎉", { id: toastId });
+//       if (res.ok) {
+//         toast.success("Recipe listed successfully in MongoDB! 🍳🎉", { id: toastId });
   
-        setFormData({
-          recipeName: '', category: '', cuisineType: '', difficulty: '',
-          prepTime: '', imageURL: '', ingredients: '', instructions: ''
-        });
-      } else {
-        toast.error(data.error || "Something went wrong.", { id: toastId });
-      }
-    } catch (error) {
-      console.error("Fetch Connection Error:", error);
-      toast.error("Failed to connect to the server.", { id: toastId });
-    } finally {
-      setLoading(false);
-    }
-  };
+//         setFormData({
+//           recipeName: '', category: '', cuisineType: '', difficulty: '',
+//           prepTime: '', imageURL: '', ingredients: '', instructions: ''
+//         });
+//       } else {
+//         toast.error(data.error || "Something went wrong.", { id: toastId });
+//       }
+//     } catch (error) {
+//       console.error("Fetch Connection Error:", error);
+//       toast.error("Failed to connect to the server.", { id: toastId });
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
 
-  return (
-    <div className="min-h-screen bg-[#F8FAFC] py-10">
-      <div className="max-w-3xl mx-auto bg-white rounded-2xl border border-gray-100 p-6 md:p-10 shadow-sm">
+//   return (
+//     <div className="min-h-screen bg-[#F8FAFC] py-10">
+//       <div className="max-w-3xl mx-auto bg-white rounded-2xl border border-gray-100 p-6 md:p-10 shadow-sm">
         
     
-        <div className="mb-6">
-          <h2 className="text-lg font-bold text-gray-950">Add a New Recipe</h2>
-          <p className="text-xs text-gray-400">Fill up the information below to list your recipe in MongoDB Database</p>
-        </div>
+//         <div className="mb-6">
+//           <h2 className="text-lg font-bold text-gray-950">Add a New Recipe</h2>
+//           <p className="text-xs text-gray-400">Fill up the information below to list your recipe in MongoDB Database</p>
+//         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-5 text-xs font-semibold text-gray-700">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+//         <form onSubmit={handleSubmit} className="space-y-5 text-xs font-semibold text-gray-700">
+//           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             
-            {/* Recipe Name */}
-            <div className="space-y-1">
-              <label>Recipe Name *</label>
-              <input 
-                required 
-                type="text" 
-                name="recipeName" 
-                value={formData.recipeName} 
-                onChange={handleChange} 
-                placeholder="e.g. Chocolate Cake" 
-                className="w-full bg-white border border-gray-200 rounded-xl px-3 py-2.5 font-medium focus:outline-none focus:border-emerald-500 text-gray-900" 
-              />
-            </div>
+//             {/* Recipe Name */}
+//             <div className="space-y-1">
+//               <label>Recipe Name *</label>
+//               <input 
+//                 required 
+//                 type="text" 
+//                 name="recipeName" 
+//                 value={formData.recipeName} 
+//                 onChange={handleChange} 
+//                 placeholder="e.g. Chocolate Cake" 
+//                 className="w-full bg-white border border-gray-200 rounded-xl px-3 py-2.5 font-medium focus:outline-none focus:border-emerald-500 text-gray-900" 
+//               />
+//             </div>
 
-            {/* Image URL */}
-            <div className="space-y-1">
-              <label>Recipe Image URL *</label>
-              <input 
-                required 
-                type="url" 
-                name="imageURL" 
-                value={formData.imageURL} 
-                onChange={handleChange} 
-                placeholder="https://imgbb.com/your-recipe.png" 
-                className="w-full bg-white border border-gray-200 rounded-xl px-3 py-2.5 font-medium focus:outline-none focus:border-emerald-500 text-gray-900" 
-              />
-            </div>
+//             {/* Image URL */}
+//             <div className="space-y-1">
+//               <label>Recipe Image URL *</label>
+//               <input 
+//                 required 
+//                 type="url" 
+//                 name="imageURL" 
+//                 value={formData.imageURL} 
+//                 onChange={handleChange} 
+//                 placeholder="https://imgbb.com/your-recipe.png" 
+//                 className="w-full bg-white border border-gray-200 rounded-xl px-3 py-2.5 font-medium focus:outline-none focus:border-emerald-500 text-gray-900" 
+//               />
+//             </div>
 
-            {/* Category */}
-            <div className="space-y-1">
-              <label>Category *</label>
-              <select 
-                required 
-                name="category" 
-                value={formData.category} 
-                onChange={handleChange} 
-                className="w-full bg-white border border-gray-200 rounded-xl px-3 py-2.5 font-medium focus:outline-none focus:border-emerald-500 text-gray-600"
-              >
-                <option value="" disabled hidden>Select category</option>
-                <option value="Breakfast">Breakfast</option>
-                <option value="Lunch">Lunch</option>
-                <option value="Dinner">Dinner</option>
-                <option value="Dessert">Dessert</option>
-              </select>
-            </div>
+//             {/* Category */}
+//             <div className="space-y-1">
+//               <label>Category *</label>
+//               <select 
+//                 required 
+//                 name="category" 
+//                 value={formData.category} 
+//                 onChange={handleChange} 
+//                 className="w-full bg-white border border-gray-200 rounded-xl px-3 py-2.5 font-medium focus:outline-none focus:border-emerald-500 text-gray-600"
+//               >
+//                 <option value="" disabled hidden>Select category</option>
+//                 <option value="Breakfast">Breakfast</option>
+//                 <option value="Lunch">Lunch</option>
+//                 <option value="Dinner">Dinner</option>
+//                 <option value="Dessert">Dessert</option>
+//               </select>
+//             </div>
 
-            {/* Cuisine Type */}
-            <div className="space-y-1">
-              <label>Cuisine Type *</label>
-              <select 
-                required 
-                name="cuisineType" 
-                value={formData.cuisineType} 
-                onChange={handleChange} 
-                className="w-full bg-white border border-gray-200 rounded-xl px-3 py-2.5 font-medium focus:outline-none focus:border-emerald-500 text-gray-600"
-              >
-                <option value="" disabled hidden>Select cuisine</option>
-                <option value="Italian">Italian</option>
-                <option value="Mexican">Mexican</option>
-                <option value="Indian">Indian</option>
-                <option value="Bengali">Bengali</option>
-              </select>
-            </div>
+//             {/* Cuisine Type */}
+//             <div className="space-y-1">
+//               <label>Cuisine Type *</label>
+//               <select 
+//                 required 
+//                 name="cuisineType" 
+//                 value={formData.cuisineType} 
+//                 onChange={handleChange} 
+//                 className="w-full bg-white border border-gray-200 rounded-xl px-3 py-2.5 font-medium focus:outline-none focus:border-emerald-500 text-gray-600"
+//               >
+//                 <option value="" disabled hidden>Select cuisine</option>
+//                 <option value="Italian">Italian</option>
+//                 <option value="Mexican">Mexican</option>
+//                 <option value="Indian">Indian</option>
+//                 <option value="Bengali">Bengali</option>
+//               </select>
+//             </div>
 
-            {/* Difficulty Level */}
-            <div className="space-y-1">
-              <label>Difficulty Level</label>
-              <select 
-                name="difficulty" 
-                value={formData.difficulty} 
-                onChange={handleChange} 
-                className="w-full bg-white border border-gray-200 rounded-xl px-3 py-2.5 font-medium focus:outline-none focus:border-emerald-500 text-gray-600"
-              >
-                <option value="" disabled hidden>Select difficulty</option>
-                <option value="Easy">Easy</option>
-                <option value="Medium">Medium</option>
-                <option value="Hard">Hard</option>
-              </select>
-            </div>
+//             {/* Difficulty Level */}
+//             <div className="space-y-1">
+//               <label>Difficulty Level</label>
+//               <select 
+//                 name="difficulty" 
+//                 value={formData.difficulty} 
+//                 onChange={handleChange} 
+//                 className="w-full bg-white border border-gray-200 rounded-xl px-3 py-2.5 font-medium focus:outline-none focus:border-emerald-500 text-gray-600"
+//               >
+//                 <option value="" disabled hidden>Select difficulty</option>
+//                 <option value="Easy">Easy</option>
+//                 <option value="Medium">Medium</option>
+//                 <option value="Hard">Hard</option>
+//               </select>
+//             </div>
 
-            {/* Preparation Time */}
-            <div className="space-y-1">
-              <label>Preparation Time (Minutes) *</label>
-              <input 
-                required 
-                type="number" 
-                name="prepTime" 
-                value={formData.prepTime} 
-                onChange={handleChange} 
-                placeholder="e.g. 30" 
-                className="w-full bg-white border border-gray-200 rounded-xl px-3 py-2.5 font-medium focus:outline-none focus:border-emerald-500 text-gray-900" 
-              />
-            </div>
+//             {/* Preparation Time */}
+//             <div className="space-y-1">
+//               <label>Preparation Time (Minutes) *</label>
+//               <input 
+//                 required 
+//                 type="number" 
+//                 name="prepTime" 
+//                 value={formData.prepTime} 
+//                 onChange={handleChange} 
+//                 placeholder="e.g. 30" 
+//                 className="w-full bg-white border border-gray-200 rounded-xl px-3 py-2.5 font-medium focus:outline-none focus:border-emerald-500 text-gray-900" 
+//               />
+//             </div>
 
-          </div>
+//           </div>
 
-          {/* Ingredients */}
-          <div className="space-y-1">
-            <label>Ingredients *</label>
-            <textarea 
-              required 
-              name="ingredients" 
-              value={formData.ingredients} 
-              onChange={handleChange} 
-              placeholder="e.g. 2 cups flour, 1 cup sugar, 3 eggs (comma separated)" 
-              className="w-full bg-white border border-gray-200 rounded-xl px-3 py-2.5 font-medium focus:outline-none focus:border-emerald-500 h-24 resize-none text-gray-900" 
-            />
-          </div>
+//           {/* Ingredients */}
+//           <div className="space-y-1">
+//             <label>Ingredients *</label>
+//             <textarea 
+//               required 
+//               name="ingredients" 
+//               value={formData.ingredients} 
+//               onChange={handleChange} 
+//               placeholder="e.g. 2 cups flour, 1 cup sugar, 3 eggs (comma separated)" 
+//               className="w-full bg-white border border-gray-200 rounded-xl px-3 py-2.5 font-medium focus:outline-none focus:border-emerald-500 h-24 resize-none text-gray-900" 
+//             />
+//           </div>
 
-          {/* Instructions */}
-          <div className="space-y-1">
-            <label>Instructions / Steps</label>
-            <textarea 
-              name="instructions" 
-              value={formData.instructions} 
-              onChange={handleChange} 
-              placeholder="Step 1. Mix dry ingredients... Step 2. Bake for 30 mins..." 
-              className="w-full bg-white border border-gray-200 rounded-xl px-3 py-2.5 font-medium focus:outline-none focus:border-emerald-500 h-28 resize-none text-gray-900" 
-            />
-          </div>
+//           {/* Instructions */}
+//           <div className="space-y-1">
+//             <label>Instructions / Steps</label>
+//             <textarea 
+//               name="instructions" 
+//               value={formData.instructions} 
+//               onChange={handleChange} 
+//               placeholder="Step 1. Mix dry ingredients... Step 2. Bake for 30 mins..." 
+//               className="w-full bg-white border border-gray-200 rounded-xl px-3 py-2.5 font-medium focus:outline-none focus:border-emerald-500 h-28 resize-none text-gray-900" 
+//             />
+//           </div>
 
-          {/* Submit Button */}
-          <div className="pt-2">
-            <button 
-              type="submit" 
-              disabled={loading} 
-              className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl transition-colors disabled:bg-gray-400"
-            >
-              {loading ? "Listing Recipe..." : "Submit Recipe Listing"}
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  );
-}
+//           {/* Submit Button */}
+//           <div className="pt-2">
+//             <button 
+//               type="submit" 
+//               disabled={loading} 
+//               className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl transition-colors disabled:bg-gray-400"
+//             >
+//               {loading ? "Listing Recipe..." : "Submit Recipe Listing"}
+//             </button>
+//           </div>
+//         </form>
+//       </div>
+//     </div>
+//   );
+// }

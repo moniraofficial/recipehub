@@ -4,7 +4,7 @@ export default function Overview() {
   const [stats, setStats] = useState({ totalUsers: 0, totalRecipes: 0, totalPremiumMembers: 0, totalReports: 0 });
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/admin/dashboard-stats')
+    fetch('https://recipehub-sigma-three.vercel.app /api/admin/dashboard-stats')
       .then(res => res.json())
       .then(data => setStats(data))
       .catch(err => console.error("Error loading dashboard metrics:", err));

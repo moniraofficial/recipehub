@@ -8,7 +8,7 @@ export default function FeaturedRecipes() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/recipes/featured")
+    fetch("https://recipehub-sigma-three.vercel.app /api/recipes/featured")
       .then(res => res.json())
       .then(data => {
         setRecipes(data);

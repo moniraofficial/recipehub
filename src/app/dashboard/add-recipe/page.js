@@ -80,7 +80,7 @@ export default function AddRecipePage() {
         // email: cleanEmail // Secondary parameter fallback for safety
       };
 
-      const res = await fetch("http://localhost:5000/api/recipes/add", {
+      const res = await fetch("https://recipehub-sigma-three.vercel.app /api/recipes/add", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(recipePayload),

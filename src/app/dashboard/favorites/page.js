@@ -13,7 +13,7 @@ export default function FavoritesPage() {
   const [loading, setLoading] = useState(true);
 
   // Dynamic API routing from environment file configuration
-  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://recipehub-sigma-three.vercel.app ";
 
   useEffect(() => {
     if (!user?.email) return;

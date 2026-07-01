@@ -26,7 +26,7 @@
 
 //     const fetchRecipeDetails = async () => {
 //       try {
-//         const res = await fetch(`http://localhost:5000/api/recipes/${id}`);
+//         const res = await fetch(`https://recipehub-sigma-three.vercel.app /api/recipes/${id}`);
 //         if (res.ok) {
 //           const data = await res.json();
 //           setRecipe(data);
@@ -378,7 +378,7 @@ export default function RecipeDetailsPage({ params: paramsPromise }) {
   const [reportReason, setReportReason] = useState("");
 
   // Dynamic Base configuration from local environment variables
-  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://recipehub-sigma-three.vercel.app ";
 
   useEffect(() => {
     if (!id) return;

@@ -13,7 +13,7 @@
 //   const [editingRecipe, setEditingRecipe] = useState(null);
 
 //   // Fallback to localhost if environment variables aren't loaded properly
-//   const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+//   const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://recipehub-sigma-three.vercel.app ";
 
 //   // Fetch only the user's specific recipes
 //   useEffect(() => {
@@ -223,7 +223,7 @@ export default function MyRecipesPage() {
   const [editingRecipe, setEditingRecipe] = useState(null);
 
   // Fallback to localhost if environment variables aren't loaded properly
-  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://recipehub-sigma-three.vercel.app ";
 
   // Core reusable function to query up-to-date recipe entries
   const fetchMyRecipes = async () => {

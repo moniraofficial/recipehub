@@ -32,7 +32,7 @@
 
 //     const fetchDashboardData = async () => {
 //       try {
-//         const res = await fetch(`http://localhost:5000/api/users/dashboard-stats?email=${user.email}`);
+//         const res = await fetch(`https://recipehub-sigma-three.vercel.app /api/users/dashboard-stats?email=${user.email}`);
 //         if (res.ok) {
 //           const data = await res.json();
 //           setStats(data);
@@ -166,7 +166,7 @@
 
 //     const fetchDashboardData = async () => {
 //       try {
-//         const res = await fetch(`http://localhost:5000/api/users/dashboard-stats?email=${user.email}`);
+//         const res = await fetch(`https://recipehub-sigma-three.vercel.app /api/users/dashboard-stats?email=${user.email}`);
 //         if (res.ok) {
 //           const data = await res.json();
 //           setStats(data);
@@ -318,7 +318,7 @@
 //       const email = user.email.toLowerCase().trim();
 
 //       const res = await fetch(
-//         `http://localhost:5000/api/users/dashboard-stats?email=${encodeURIComponent(email)}`
+//         `https://recipehub-sigma-three.vercel.app /api/users/dashboard-stats?email=${encodeURIComponent(email)}`
 //       );
 
 //       if (!res.ok) {
@@ -473,7 +473,7 @@
 //   const [loadingStats, setLoadingStats] = useState(true);
 
 //   // Dynamic Base configuration from local environment
-//   const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+//   const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://recipehub-sigma-three.vercel.app ";
 
 //   useEffect(() => {
 //     if (!isPending && !user) {
@@ -690,7 +690,7 @@
 //   });
 //   const [loadingStats, setLoadingStats] = useState(true);
 
-//   const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+//   const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://recipehub-sigma-three.vercel.app ";
 
 //   // Set the default tab choice based on account context role type
 //   useEffect(() => {
@@ -1020,7 +1020,7 @@ export default function UnifiedDashboardPage() {
 
 
 
-  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://recipehub-sigma-three.vercel.app ";
 
 
 
